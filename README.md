@@ -1,4 +1,4 @@
-# DyeAndDurhamOA
+# Dye and Durham OA - Name Sorter
 
 ## Purpose
 This command line tool sorts a list of names by last name, then first and given names. 
