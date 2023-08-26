@@ -23,7 +23,7 @@
             {
                 if (!string.IsNullOrWhiteSpace(stringName))
                 {
-                    names.Add(new Name(stringName));
+                    names.Add(new NameLastFirsts(stringName));
                 }
             }
 
@@ -32,7 +32,7 @@
 
         public static void Main(string[] args)
         {
-            NameSorter nSorter;
+            NameSorterDefault nSorter;
             string stringBlobName = null;
             string outputString;
             // error handling in case of unexpected failure while reading
@@ -53,7 +53,7 @@
 
 
             // generate output string
-            nSorter = new NameSorter(HelperStringToINameList(stringBlobName, Environment.NewLine));
+            nSorter = new NameSorterDefault(HelperStringToINameList(stringBlobName, Environment.NewLine));
             outputString = nSorter.GetSortedString(Environment.NewLine);
 
             // write output to console and file

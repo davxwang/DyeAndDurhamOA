@@ -1,16 +1,18 @@
-﻿namespace DyeAndDurhamOANameSorter
+﻿using System.Collections.ObjectModel;
+
+namespace DyeAndDurhamOANameSorter
 {
     /// <summary>
     /// Sorts objects that implements IName. 
     /// </summary>
-    public class NameSorter
+    public class NameSorterDefault : INameSorter
     {
         private List<IName> names;
 
         /// <summary>
         /// Default constructor. Creates an empty Names list.
         /// </summary>
-        public NameSorter()
+        public NameSorterDefault()
         {
             this.names = new List<IName>();
         }
@@ -19,7 +21,7 @@
         /// List constructor. Makes a shallow copy of the list, and store it.
         /// </summary>
         /// <param name="names">List of objects that implement INames</param>
-        public NameSorter(List<IName> names)
+        public NameSorterDefault(List<IName> names)
         {
             Replace(names);
         }
@@ -33,11 +35,21 @@
             this.names.Add(name);
         }
 
+        public void Remove(IName name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<IName> GetResult()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Makes a shallow copy of the list, and store it.
         /// </summary>
         /// <param name="names">List of objects that implement INames</param>
-        public void Replace(List<IName> names)
+        public void Replace(ICollection<IName> names)
         {
             this.names = new List<IName>(names);
         }

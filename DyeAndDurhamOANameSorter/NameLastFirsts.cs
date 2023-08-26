@@ -1,9 +1,10 @@
 ﻿namespace DyeAndDurhamOANameSorter
 {
     /// <summary>
-    /// Class that stores names as first names[], last name, and full name
+    /// Class that stores names as first names[], last name, and full name. 
+    /// Comparer orders last names first, followed by the first names in order.
     /// </summary>
-    public class Name : IName
+    public class NameLastFirsts : IName
     {
         private List<string> firstNames;
         private string lastName, fullName;
@@ -17,7 +18,7 @@
         /// <summary>
         /// Default constructor populates lastName and fullName with empty strings, and firstNames with an empty list
         /// </summary>
-        public Name()
+        public NameLastFirsts()
         {
             fullName = "";
             firstNames = new List<string>();
@@ -27,7 +28,7 @@
         /// Populates the name fields based on the fullName. Null, empty, or whitespace fullName fallsback to default constructor behavior. Single name fullName assumes there is only a lastName and no firstNames.
         /// </summary>
         /// <param name="fullName">full name</param>
-        public Name(string fullName)
+        public NameLastFirsts(string fullName)
         {
             SetFullName(fullName);
         }
@@ -61,7 +62,7 @@
             // default behavior?
             if (obj == null) return 1;
 
-            Name otherName = obj as Name;
+            NameLastFirsts otherName = obj as NameLastFirsts;
             if (otherName != null)
                 // same last name. Check first names.
                 if (this.lastName == otherName.lastName)

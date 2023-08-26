@@ -9,7 +9,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_NameSorter_Constructor_Default()
         {
-            NameSorter testClass = new NameSorter();
+            NameSorterDefault testClass = new NameSorterDefault();
 
             Assert.IsTrue(testClass.GetSortedString(Environment.NewLine) == "");
         }
@@ -18,11 +18,11 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_NameSorter_Constructor_List()
         {
             List<IName> testList = new List<IName>();
-            testList.Add(new Name("A"));
-            testList.Add(new Name("B"));
-            testList.Add(new Name("C"));
+            testList.Add(new NameLastFirsts("A"));
+            testList.Add(new NameLastFirsts("B"));
+            testList.Add(new NameLastFirsts("C"));
 
-            NameSorter testClass = new NameSorter(testList);
+            NameSorterDefault testClass = new NameSorterDefault(testList);
 
             Assert.IsTrue(testClass.GetSortedString(" ") == "A B C");
         }
@@ -32,7 +32,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         {
             List<IName> testList = new List<IName>();
 
-            NameSorter testClass = new NameSorter(testList);
+            NameSorterDefault testClass = new NameSorterDefault(testList);
 
             Assert.IsTrue(testClass.GetSortedString(" ") == "");
         }
@@ -41,9 +41,9 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_NameSorter_Constructor_Add()
         {
             List<IName> testList = new List<IName>();
-            NameSorter testClass = new NameSorter(testList);
+            NameSorterDefault testClass = new NameSorterDefault(testList);
 
-            testClass.Add(new Name("A"));
+            testClass.Add(new NameLastFirsts("A"));
 
             Assert.IsTrue(testClass.GetSortedString(" ") == "A");
         }
@@ -52,14 +52,14 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_NameSorter_Constructor_Replace()
         {
             List<IName> testList = new List<IName>();
-            testList.Add(new Name("A"));
-            testList.Add(new Name("B"));
-            testList.Add(new Name("C"));
-            NameSorter testClass = new NameSorter(testList);
+            testList.Add(new NameLastFirsts("A"));
+            testList.Add(new NameLastFirsts("B"));
+            testList.Add(new NameLastFirsts("C"));
+            NameSorterDefault testClass = new NameSorterDefault(testList);
             testList = new List<IName>();
-            testList.Add(new Name("D"));
-            testList.Add(new Name("E"));
-            testList.Add(new Name("F"));
+            testList.Add(new NameLastFirsts("D"));
+            testList.Add(new NameLastFirsts("E"));
+            testList.Add(new NameLastFirsts("F"));
 
             testClass.Replace(testList);
 
@@ -70,10 +70,10 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_NameSorter_Constructor_GetSortedString_Simple()
         {
             List<IName> testList = new List<IName>();
-            testList.Add(new Name("B"));
-            testList.Add(new Name("A"));
-            testList.Add(new Name("C"));
-            NameSorter testClass = new NameSorter(testList);
+            testList.Add(new NameLastFirsts("B"));
+            testList.Add(new NameLastFirsts("A"));
+            testList.Add(new NameLastFirsts("C"));
+            NameSorterDefault testClass = new NameSorterDefault(testList);
 
             Assert.IsTrue(testClass.GetSortedString(" ") == "A B C");
         }
@@ -82,14 +82,14 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_NameSorter_Constructor_GetSortedString_Including_Space_Mixed_Lastname()
         {
             List<IName> testList = new List<IName>();
-            testList.Add(new Name("AAA ZZZ"));
-            testList.Add(new Name("AAA AAA"));
-            testList.Add(new Name("AAA AAA AAA"));
-            testList.Add(new Name("AAA BBB AAA"));
-            testList.Add(new Name("YYY"));
-            testList.Add(new Name("AAA YYY"));
+            testList.Add(new NameLastFirsts("AAA ZZZ"));
+            testList.Add(new NameLastFirsts("AAA AAA"));
+            testList.Add(new NameLastFirsts("AAA AAA AAA"));
+            testList.Add(new NameLastFirsts("AAA BBB AAA"));
+            testList.Add(new NameLastFirsts("YYY"));
+            testList.Add(new NameLastFirsts("AAA YYY"));
 
-            NameSorter testClass = new NameSorter(testList);
+            NameSorterDefault testClass = new NameSorterDefault(testList);
 
             Assert.IsTrue(testClass.GetSortedString("|") == "AAA AAA|AAA AAA AAA|AAA BBB AAA|YYY|AAA YYY|AAA ZZZ");
         }
@@ -98,10 +98,10 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_NameSorter_Constructor_Clear()
         {
             List<IName> testList = new List<IName>();
-            testList.Add(new Name("A"));
-            testList.Add(new Name("B"));
-            testList.Add(new Name("C"));
-            NameSorter testClass = new NameSorter(testList);
+            testList.Add(new NameLastFirsts("A"));
+            testList.Add(new NameLastFirsts("B"));
+            testList.Add(new NameLastFirsts("C"));
+            NameSorterDefault testClass = new NameSorterDefault(testList);
 
             testClass.Clear();
 

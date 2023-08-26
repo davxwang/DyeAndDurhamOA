@@ -8,7 +8,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Constructor_Default()
         {
-            Name testClass = new Name();
+            NameLastFirsts testClass = new NameLastFirsts();
 
             Assert.AreEqual(testClass.FullName, "");
         }
@@ -16,7 +16,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Constructor_String_Empty()
         {
-            Name testClass = new Name();
+            NameLastFirsts testClass = new NameLastFirsts();
 
             Assert.AreEqual(testClass.FullName, "");
         }
@@ -26,7 +26,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         {
             string testString = " ";
 
-            Name testClass = new Name(testString);
+            NameLastFirsts testClass = new NameLastFirsts(testString);
 
             Assert.AreEqual(testClass.FullName, "");
         }
@@ -36,7 +36,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         {
             string testString = "        ";
 
-            Name testClass = new Name(testString);
+            NameLastFirsts testClass = new NameLastFirsts(testString);
 
             Assert.AreEqual(testClass.FullName, "");
         }
@@ -45,7 +45,7 @@ namespace DyeAndDurhamOANameSorter.Tests
         public void Test_Name_String_Set_Fullname()
         {
             string testString = "AAA ZZZ";
-            Name testClass = new Name();
+            NameLastFirsts testClass = new NameLastFirsts();
 
             testClass.FullName = testString;
 
@@ -55,8 +55,8 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Comparison_Basic()
         {
-            Name testClass1 = new Name("AAA");
-            Name testClass2 = new Name("BBB");
+            NameLastFirsts testClass1 = new NameLastFirsts("AAA");
+            NameLastFirsts testClass2 = new NameLastFirsts("BBB");
 
             Assert.IsTrue(testClass1.CompareTo(testClass2) < 0);
         }
@@ -64,8 +64,8 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Comparison_Equal()
         {
-            Name testClass1 = new Name("AAA");
-            Name testClass2 = new Name("AAA");
+            NameLastFirsts testClass1 = new NameLastFirsts("AAA");
+            NameLastFirsts testClass2 = new NameLastFirsts("AAA");
 
             Assert.IsTrue(testClass1.CompareTo(testClass2) == 0);
         }
@@ -73,8 +73,8 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Comparison_Lastname()
         {
-            Name testClass1 = new Name("AAA ZZZ");
-            Name testClass2 = new Name("ZZZ AAA");
+            NameLastFirsts testClass1 = new NameLastFirsts("AAA ZZZ");
+            NameLastFirsts testClass2 = new NameLastFirsts("ZZZ AAA");
 
             Assert.IsTrue(testClass1.CompareTo(testClass2) > 0);
         }
@@ -82,8 +82,8 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Comparison_Many_Firstnames()
         {
-            Name testClass1 = new Name("AAA AAA BBB AAA");
-            Name testClass2 = new Name("AAA AAA AAA AAA");
+            NameLastFirsts testClass1 = new NameLastFirsts("AAA AAA BBB AAA");
+            NameLastFirsts testClass2 = new NameLastFirsts("AAA AAA AAA AAA");
 
             Assert.IsTrue(testClass1.CompareTo(testClass2) > 0);
         }
@@ -91,8 +91,8 @@ namespace DyeAndDurhamOANameSorter.Tests
         [TestMethod]
         public void Test_Name_Comparison_Firstname_Length_Mismatch()
         {
-            Name testClass1 = new Name("AAA AAA");
-            Name testClass2 = new Name("AAA AAA AAA AAA");
+            NameLastFirsts testClass1 = new NameLastFirsts("AAA AAA");
+            NameLastFirsts testClass2 = new NameLastFirsts("AAA AAA AAA AAA");
 
             Assert.IsTrue(testClass1.CompareTo(testClass2) < 0);
         }
