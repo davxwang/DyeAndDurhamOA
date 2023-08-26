@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace DyeAndDurhamOANameSorter
+﻿namespace DyeAndDurhamOANameSorter
 {
     /// <summary>
     /// Sorts objects that implements IName. 
@@ -14,16 +12,22 @@ namespace DyeAndDurhamOANameSorter
         /// </summary>
         public NameSorterDefault()
         {
-            this.names = new List<IName>();
+            names = new List<IName>();
         }
 
         /// <summary>
-        /// List constructor. Makes a shallow copy of the list, and store it.
+        /// ICollection constructor. Makes a shallow copy of the list, and stores it.
         /// </summary>
         /// <param name="names">List of objects that implement INames</param>
-        public NameSorterDefault(List<IName> names)
+        public NameSorterDefault(ICollection<IName> names)
         {
             Replace(names);
+            
+            // should never run. Replace handles initializing names.
+            if (this.names is null)
+            {
+                this.names = new List<IName>();
+            }
         }
 
         /// <summary>
@@ -32,17 +36,17 @@ namespace DyeAndDurhamOANameSorter
         /// <param name="name">object that implements IName</param>
         public void Add(IName name)
         {
-            this.names.Add(name);
+            names.Add(name);
         }
 
         public void Remove(IName name)
         {
-            throw new NotImplementedException();
+            names.Remove(name);
         }
 
         public ICollection<IName> GetResult()
         {
-            throw new NotImplementedException();
+            return names;
         }
 
         /// <summary>
@@ -53,31 +57,13 @@ namespace DyeAndDurhamOANameSorter
         {
             this.names = new List<IName>(names);
         }
-
-        /// <summary>
-        /// Sort and return the list as a string.
-        /// </summary>
-        /// <param name="delimiter">separator between names</param>
-        /// <returns></returns>
-        public string GetSortedString(string delimiter)
-        {
-            string[] stringNames = new string[names.Count];
-            // comparer is implemented by object
-            names.Sort();
-            for (int i = 0; i < names.Count; i++)
-            {
-                stringNames[i] = names[i].FullName;
-            }
-
-            return string.Join(delimiter, stringNames);
-        }
         
         /// <summary>
-        /// Empties the Names list.
+        /// Empties the names list.
         /// </summary>
         public void Clear()
         {
-            this.names.Clear();
+            names.Clear();
         }
     }
 }
