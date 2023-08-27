@@ -41,7 +41,7 @@
                 {
                     string outputString = NameSerializer.INameToString(name);
 
-                    sw.Write(outputString);
+                    sw.WriteLine(outputString);
                     Console.WriteLine(outputString);
                 }
             }
