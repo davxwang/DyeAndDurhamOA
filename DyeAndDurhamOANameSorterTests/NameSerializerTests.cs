@@ -7,6 +7,16 @@ namespace DyeAndDurhamOANameSorter.Tests
     {
         // INameToString
 
+        [TestMethod("INameToString: Null case")]
+        public void Test_INameToString_Null()
+        {
+            IName? testClass = null;
+
+            string result = NameSerializer.INameToString(testClass);
+
+            StringAssert.Equals(result, "");
+        }
+
         [TestMethod("INameToString: Empty case")]
         public void Test_INameToString_Empty()
         {
