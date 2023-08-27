@@ -1,7 +1,7 @@
 ﻿namespace DyeAndDurhamOANameSorter
 {
     /// <summary>
-    /// Methods for deserializing a name from a string. Needs a NameFactory instance as a parameter for functions.
+    /// Functions for deserializing a name from a string. Needs a NameFactory instance as a parameter for functions.
     /// Cannot be instanciated, but can be inherited from. 
     /// </summary>
     public class NameDeserializer
