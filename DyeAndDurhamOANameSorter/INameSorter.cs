@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace DyeAndDurhamOANameSorter
 {
     /// <summary>
-    /// Abstract class NameSorter. 
+    /// Interface for NameSorters. 
+    /// ICollection used for flexibility.
     /// </summary>
     public interface INameSorter
     {
