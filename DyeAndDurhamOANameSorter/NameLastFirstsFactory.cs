@@ -1,16 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DyeAndDurhamOANameSorter
+﻿namespace DyeAndDurhamOANameSorter
 {
+    /// <summary>
+    /// Concrete factory for producing NameLastFirsts instances.
+    /// </summary>
     public class NameLastFirstsFactory : INameFactory
     {
+        /// <summary>
+        /// Produces a NameLastFirsts with a default constructor.
+        /// </summary>
+        /// <returns>NameLastFirsts instance with default values.</returns>
         public IName ProduceName()
         {
-            throw new NotImplementedException();
+            return new NameLastFirsts();
+        }
+
+        /// <summary>
+        /// Produces a NameLastFirsts with the string constructor.
+        /// </summary>
+        /// <param name="name">string that represents the fullname.</param>
+        /// <returns>NameLastFirsts instance with fullName set to the constructor.</returns>
+        public IName ProduceName(string fullName)
+        {
+            return new NameLastFirsts(fullName);
         }
     }
 }

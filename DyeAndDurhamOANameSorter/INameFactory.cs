@@ -6,5 +6,6 @@
     public interface INameFactory
     {
         IName ProduceName();
+        IName ProduceName(string fullName);
     }
 }
