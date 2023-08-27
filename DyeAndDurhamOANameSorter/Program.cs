@@ -2,47 +2,24 @@
 {
     public class Program
     {
-        public static List<IName> HelperStringToINameList(string stringBlockNames, string delimiter)
-        {
-            string[] stringNames;
-            List<IName> names;
-            
-            // edge case. Handle by giving a blank string array.
-            if (stringBlockNames == null)
-            {
-                stringNames = new string[] { "" };
-            }
-            else
-            {
-                // split string block into names based on the newline character. 
-                stringNames = stringBlockNames.Split(delimiter);
-            }
-
-            names = new List<IName>(stringNames.Length);
-            foreach (string stringName in stringNames)
-            {
-                if (!string.IsNullOrWhiteSpace(stringName))
-                {
-                    names.Add(new NameLastFirsts(stringName));
-                }
-            }
-
-            return names;
-        }
-
         public static void Main(string[] args)
         {
-            NameSorterDefault nSorter;
-            string stringBlobName = null;
-            string outputString;
+            NameSorterDefault NameSorterDefault = new NameSorterDefault();
+            NameLastFirstsFactory nameLastFirstsFactory = new NameLastFirstsFactory();
+            List<IName> names = new List<IName>();
+
             // error handling in case of unexpected failure while reading
             try
             {
                 // Open the text file asynchronously using the stream reader.
                 using (StreamReader sr = new StreamReader("./unsorted-names-list.txt"))
                 {
-                    // Read the file as a string
-                    stringBlobName = sr.ReadToEnd();
+                    string? inputName;
+                    // Read and deserialize one line at a time. Stop once eof is reached.
+                    while((inputName = sr.ReadLine()) is not null)
+                    {
+                        names.Add(NameDeserializer.SingleStringNameToIName(inputName, nameLastFirstsFactory));
+                    }
                 }
             }
             catch (IOException e)
@@ -52,15 +29,21 @@
             }
 
 
-            // generate output string
-            nSorter = new NameSorterDefault(HelperStringToINameList(stringBlobName, Environment.NewLine));
-            outputString = nSorter.GetSortedString(Environment.NewLine);
+            // sort
+            NameSorterDefault.Replace(names);
+            // in case it somehow returns null, assume it intended to mean empty list
+            names = NameSorterDefault.GetResult() as List<IName> ?? new List<IName>();
 
             // write output to console and file
-            Console.WriteLine(outputString);
             using (StreamWriter sw = new StreamWriter("sorted-names-list.txt"))
             {
-                sw.Write(outputString);
+                foreach (IName name in names)
+                {
+                    string outputString = NameSerializer.INameToString(name);
+
+                    sw.Write(outputString);
+                    Console.WriteLine(outputString);
+                }
             }
         }
     }

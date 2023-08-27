@@ -59,7 +59,7 @@
         }
 
         /// <summary>
-        /// Makes a shallow copy of the list, and store it as names.
+        /// Makes a shallow copy of the ICollection, and store it as a list of names.
         /// </summary>
         /// <param name="names">ICollection of objects that implement INames</param>
         public void Replace(ICollection<IName> names)
