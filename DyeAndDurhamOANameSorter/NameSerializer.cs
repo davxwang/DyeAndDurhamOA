@@ -16,8 +16,12 @@
         /// </summary>
         /// <param name="name">IName to be serialized.</param>
         /// <returns></returns>
-        public static string INameToString(IName name)
+        public static string INameToString(IName? name)
         {
+            if (name == null)
+            {
+                return "";
+            }
             return name.FullName;
         }
 
