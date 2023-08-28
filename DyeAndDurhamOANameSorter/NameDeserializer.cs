@@ -30,7 +30,7 @@
         /// <param name="delimiter">delimiter of the string parameter</param>
         /// <param name="nameProducer">Factory instance of the needed concrete name.</param>
         /// <param name="nameCollection">ICollection instance for storing the INames</param>
-        /// <returns>ICollection instance filled with INames.</returns>
+        /// <returns>ICollection instance to be filled with INames.</returns>
         public static ICollection<IName> BlockStringNameToIName(string fullNameBlock, string delimiter, INameFactory nameProducer, ICollection<IName> nameCollection)
         {
             string[] stringNames;
