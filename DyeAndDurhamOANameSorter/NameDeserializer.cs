@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="fullName">string of a single name.</param>
         /// <param name="nameProducer">Factory instance of the needed concrete name.</param>
-        /// <returns></returns>
+        /// <returns>result of the factory cast as IName</returns>
         public static IName SingleStringNameToIName(string fullName, INameFactory nameProducer)
         {
             return nameProducer.ProduceName(fullName);
