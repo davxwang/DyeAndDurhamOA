@@ -52,6 +52,7 @@ The exception mentioned is the factory pattern's concrete factory. However that 
 A few examples: `INameFactory` produces `IName` objects, `INameSorter` takes `IName` and `ICollection<IName>` as opposed to `List<IName>`.
 
 ## Extension Guideline
+The program first serializes the input strings into concrete `IName` instances using a concrete `INameFactory` instance. `IName` handles ordering the names. The resulting collection of names are then placed into a concrete `ICollection` instance, and fed into `INameSorter`. The resulting `ICollection` instance contains the sorted `IName`s. 
 
 For adding new ways to order names, such as ignoring prefix and suffix titles when sorting, add a class that implements `IName` and add its corresponding factory. 
 
