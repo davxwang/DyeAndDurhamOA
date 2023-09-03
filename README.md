@@ -1,7 +1,7 @@
 # Dye and Durham OA - Name Sorter
 
 ## Purpose
-This command line tool sorts a list of names by last name, then first and given names. 
+Demonstrate an understanding of SOLID principles through designing a command line tool which sorts a list of names by last name, first name, then given names. 
 
 ## Usage
 DyeAndDurhamOANameSorter.exe .\unsorted.txt
